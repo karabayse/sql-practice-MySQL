@@ -25,3 +25,5 @@ WHERE id = 3;
 
 DELETE FROM students
 WHERE id = 3;
+
+ALTER TABLE students ADD gradYear INT(255);
