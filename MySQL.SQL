@@ -13,4 +13,8 @@ CREATE TABLE customers(
 );
 
 INSERT INTO customers (firstName, lastName, email, address, city, state, zipcode)
-VALUES ('Jane', 'Doe', 'janedoe@gmail.com', '800 W College Ave', 'St. Peter', 'MN', '56082')
+VALUES ('Jane', 'Doe', 'janedoe@gmail.com', '800 W College Ave', 'St. Peter', 'MN', '56082'),
+('John', 'Doe', 'johndoe@gmail.com', '800 W College Ave', 'St. Peter', 'MN', '56082'),
+('June', 'Doe', 'junedoe@gmail.com', '800 W College Ave', 'St. Peter', 'MN', '56082'),
+('James', 'Doe', 'jamesdoe@gmail.com', '800 W College Ave', 'St. Peter', 'MN', '56082'),
+('Jan', 'Doe', 'jandoe@gmail.com', '800 W College Ave', 'St. Peter', 'MN', '56082');
