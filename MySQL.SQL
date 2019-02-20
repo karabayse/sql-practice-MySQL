@@ -26,4 +26,7 @@ WHERE id = 3;
 DELETE FROM students
 WHERE id = 3;
 
-ALTER TABLE students ADD gradYear INT(255);
+ALTER TABLE students ADD gradYear VARCHAR(255);
+
+ALTER TABLE students
+MODIFY COLUMN gradYear INT(4);
