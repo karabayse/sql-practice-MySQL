@@ -94,6 +94,8 @@ Example:  Years_Attended <= 4
 BETWEEN  Between an inclusive range
 Example:  Tuition cost BETWEEN 30000.00 AND 50000.00
 
+%  Wild Card
+
 LIKE  Match a character pattern
 Example:  First_Name LIKE 'Jane%'
 
@@ -108,3 +110,22 @@ Example:  Start_Date IS NOT DISTINCT FROM Graduation_Date
 
 AS  Used to change a field name when viewing results
 Example:  SELECT student AS 'alumni'
+
+
+-- SELECT with OPERATORS
+SELECT * FROM students
+WHERE age
+BETWEEN 18 and 22;
+
+-- LIKE with % at beginning
+-- Filters cities that end in 'r'
+SELECT * FROM students
+WHERE city LIKE '%r'
+-- LIKE with % at the end
+-- Filters cities that begin with 's'
+SELECT * FROM students
+WHERE city LIKE 's%'
+-- LIKE with % on both ends
+-- Filters cities that contain 'a'
+SELECT * FROM students
+WHERE city LIKE '%a%'
