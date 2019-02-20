@@ -52,3 +52,7 @@ SELECT * FROM students WHERE id = 4;
 
 -- Order By (sort)
 SELECT * FROM students ORDER BY lastName;
+-- Order By in descending order
+SELECT * FROM students ORDER BY lastName DESC;
+-- Order By in ascending order
+SELECT * FROM students ORDER BY lastName ASC;
