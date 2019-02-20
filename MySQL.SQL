@@ -20,18 +20,18 @@ VALUES ('Jane', 'Doe', 'janedoe@gac.edu', '800 W College Ave', 'St. Peter', 'MN'
 ('Jan', 'Doe', 'jandoe@gac.edu', '800 W College Ave', 'St. Peter', 'MN', '56082');
 
 
--- Update
+-- UPDATE
 UPDATE students
 SET email = 'junedoe@gmail.com'
 WHERE id = 3;
 
 
--- Delete
+-- DELETE
 DELETE FROM students
 WHERE id = 3;
 
 
--- Alter Table
+-- ALTER TABLE
 ALTER TABLE students ADD gradYear VARCHAR(255);
 ALTER TABLE students ADD testCol VARCHAR(255);
 
@@ -42,7 +42,7 @@ ALTER TABLE students
 DROP COLUMN testCol;
 
 
--- Select
+-- SELECT
 SELECT * FROM students;
 
 SELECT firstName, lastName FROM students;
@@ -56,3 +56,55 @@ SELECT * FROM students ORDER BY lastName;
 SELECT * FROM students ORDER BY lastName DESC;
 -- Order By in ascending order
 SELECT * FROM students ORDER BY lastName ASC;
+
+SELECT state from students;
+-- Distinct (filter out duplicates)
+SELECT DISTINCT state from students;
+
+ALTER TABLE students
+ADD COLUMN age INT;
+
+INSERT INTO students (age)
+VALUES (18), (19), (20), (21);
+
+SELECT * FROM students WHERE age <20;
+
+
+-- OPERATORS
+
+=  Equal to
+Example:  Professor = 'Austen'
+
+<>  Not equal to
+Many DBMSs accept != in addition to <>
+Example:  Major <> 'Spanish'
+
+> Greater than
+Example:  Graduation_Date > '2019-05-31'
+
+< Less than
+Example:  Graduation_Date < '2019-05-31'
+
+>= Greater than or equal
+Example:  Years_Attended >= 1
+
+<= Less than or equal
+Example:  Years_Attended <= 4
+
+BETWEEN  Between an inclusive range
+Example:  Tuition cost BETWEEN 30000.00 AND 50000.00
+
+LIKE  Match a character pattern
+Example:  First_Name LIKE 'Jane%'
+
+IN  Equal to one of multiple possible values
+Example:  Graduation_Date IN (2019, 2020, 2021, 2022)
+
+IS or IS NOT  Compare to null (missing data)
+Example:  Address is NOT NULL
+
+IS NOT DISTINCT FROM  Is equal to value or both are nulls (missing data)
+Example:  Start_Date IS NOT DISTINCT FROM Graduation_Date
+
+AS  Used to change a field name when viewing results
+Example:  SELECT student AS 'alumni'
