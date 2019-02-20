@@ -125,7 +125,27 @@ WHERE city LIKE '%r'
 -- Filters cities that begin with 's'
 SELECT * FROM students
 WHERE city LIKE 's%'
--- LIKE with % on both ends
+-- LIKE and NOT LIKE with % on both ends
 -- Filters cities that contain 'a'
 SELECT * FROM students
 WHERE city LIKE '%a%'
+-- Filters cities that do not contain 'a'
+SELECT * FROM students
+WHERE city NOT LIKE '%a%'
+
+
+-- IN
+SELECT * FROM students
+WHERE state IN ('Minnesota', 'Wisconsin');
+
+
+-- INDEXES
+-- * An index can be created in a table to find data more quickly and efficiently
+-- * Users do not see indexes, they are just simply used to speed up searches/queries
+-- * Only create indexes on columns (and tables) that will be frequently searched against
+CREATE INDEX CIndex
+ON students(city);
+
+SELECT city FROM students;
+
+DROP INDEX CIndex ON students;
