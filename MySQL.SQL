@@ -202,3 +202,11 @@ FROM customers
 INNER JOIN orders
 ON customers.id = orders.customerId
 ORDER BY orders.orderNumber;
+
+-- LEFT JOIN
+-- Returns matching rows from the Left Table with matching rows from the Right Table
+SELECT customers.firstName, customers.lastName, orders.orderNumber, orders.orderDate
+FROM customers
+LEFT JOIN orders
+ON customers.id = orders.customerId
+ORDER BY customers.lastName;
