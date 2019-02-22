@@ -172,3 +172,33 @@ CREATE TABLE orders (
   FOREIGN KEY(customerId) REFERENCES customers(id),
   FOREIGN KEY(productId) REFERENCES products(id)
 );
+
+
+-- JOINS
+-- Used to combine rows from two or more tables based on a common field between them
+-- Types:  INNER JOIN, LEFT JOIN, RIGHT JOIN, FULL JOIN
+INSERT INTO products(name, price) VALUES
+('Product One', 10),
+('Product Two', 5),
+('Product Three', 65),
+('Product Four', 45),
+('Product Five', 100);
+
+INSERT INTO orders(orderNumber, productId, customerId) VALUES
+(001, 1, 4),
+(002, 3, 1),
+(004, 1, 1),
+(005, 1, 2),
+(006, 1, 1),
+(007, 4, 6),
+(008, 4, 4),
+(009, 2, 5);
+
+-- INNER JOIN
+-- Most popular
+-- Returns all rows when there is at least 1 match in both tables
+SELECT customers.firstName, customers.lastName, orders.orderNumber
+FROM customers
+INNER JOIN orders
+ON customers.id = orders.customerId
+ORDER BY orders.orderNumber;
