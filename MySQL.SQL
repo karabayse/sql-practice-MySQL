@@ -1,6 +1,6 @@
 CREATE DATABASE practicemysql;
 
-CREATE TABLE students(
+CREATE TABLE customers(
   id INT NOT NULL AUTO_INCREMENT,
   firstName VARCHAR(255),
   lastName VARCHAR(255),
@@ -12,62 +12,62 @@ CREATE TABLE students(
   PRIMARY KEY(id)
 );
 
-INSERT INTO students (firstName, lastName, email, address, city, state, zipcode)
-VALUES ('Jane', 'Doe', 'janedoe@gac.edu', '800 W College Ave', 'St. Peter', 'MN', '56082'),
+INSERT INTO customers (firstName, lastName, email, address, city, state, zipcode)
+VALUES ('Jane', 'Doe', 'janedoe@gac.edu', '123 Main Street', 'Hopkins', 'MN', '55343'),
 ('John', 'Doe', 'johndoe@gac.edu', '800 W College Ave', 'St. Peter', 'MN', '56082'),
 ('June', 'Doe', 'junedoe@gac.edu', '800 W College Ave', 'St. Peter', 'MN', '56082'),
 ('James', 'Doe', 'jamesdoe@gac.edu', '800 W College Ave', 'St. Peter', 'MN', '56082'),
-('Jan', 'Doe', 'jandoe@gac.edu', '800 W College Ave', 'St. Peter', 'MN', '56082');
+('Jan', 'Doe', 'jandoe@gac.edu', '456 Country Lane', 'Lester Prairie', 'MN', '55354');
 
 
 -- UPDATE
-UPDATE students
+UPDATE customers
 SET email = 'junedoe@gmail.com'
 WHERE id = 3;
 
 
 -- DELETE
-DELETE FROM students
+DELETE FROM customers
 WHERE id = 3;
 
 
 -- ALTER TABLE
-ALTER TABLE students ADD gradYear VARCHAR(255);
-ALTER TABLE students ADD testCol VARCHAR(255);
+ALTER TABLE customers ADD gradYear VARCHAR(255);
+ALTER TABLE customers ADD testCol VARCHAR(255);
 
-ALTER TABLE students
+ALTER TABLE customers
 MODIFY COLUMN gradYear INT(4);
 
-ALTER TABLE students
+ALTER TABLE customers
 DROP COLUMN testCol;
 
 
 -- SELECT
-SELECT * FROM students;
+SELECT * FROM customers;
 
-SELECT firstName, lastName FROM students;
+SELECT firstName, lastName FROM customers;
 
 -- id is the primary key and is unique
-SELECT * FROM students WHERE id = 4;
+SELECT * FROM customers WHERE id = 4;
 
 -- Order By (sort)
-SELECT * FROM students ORDER BY lastName;
+SELECT * FROM customers ORDER BY lastName;
 -- Order By in descending order
-SELECT * FROM students ORDER BY lastName DESC;
+SELECT * FROM customers ORDER BY lastName DESC;
 -- Order By in ascending order
-SELECT * FROM students ORDER BY lastName ASC;
+SELECT * FROM customers ORDER BY lastName ASC;
 
-SELECT state from students;
+SELECT state from customers;
 -- Distinct (filter out duplicates)
-SELECT DISTINCT state from students;
+SELECT DISTINCT state from customers;
 
-ALTER TABLE students
+ALTER TABLE customers
 ADD COLUMN age INT;
 
-INSERT INTO students (age)
-VALUES (18), (19), (20), (21);
+INSERT INTO customers (age)
+VALUES (24), (19), (20), (30);
 
-SELECT * FROM students WHERE age <20;
+SELECT * FROM customers WHERE age <20;
 
 
 -- OPERATORS
@@ -113,29 +113,29 @@ Example:  SELECT student AS 'alumni'
 
 
 -- SELECT with OPERATORS
-SELECT * FROM students
+SELECT * FROM customers
 WHERE age
 BETWEEN 18 and 22;
 
 -- LIKE with % at beginning
 -- Filters cities that end in 'r'
-SELECT * FROM students
+SELECT * FROM customers
 WHERE city LIKE '%r'
 -- LIKE with % at the end
 -- Filters cities that begin with 's'
-SELECT * FROM students
+SELECT * FROM customers
 WHERE city LIKE 's%'
 -- LIKE and NOT LIKE with % on both ends
 -- Filters cities that contain 'a'
-SELECT * FROM students
+SELECT * FROM customers
 WHERE city LIKE '%a%'
 -- Filters cities that do not contain 'a'
-SELECT * FROM students
+SELECT * FROM customers
 WHERE city NOT LIKE '%a%'
 
 
 -- IN
-SELECT * FROM students
+SELECT * FROM customers
 WHERE state IN ('Minnesota', 'Wisconsin');
 
 
@@ -144,8 +144,31 @@ WHERE state IN ('Minnesota', 'Wisconsin');
 -- * Users do not see indexes, they are just simply used to speed up searches/queries
 -- * Only create indexes on columns (and tables) that will be frequently searched against
 CREATE INDEX CIndex
-ON students(city);
+ON customers(city);
 
-SELECT city FROM students;
+SELECT city FROM customers;
 
-DROP INDEX CIndex ON students;
+DROP INDEX CIndex ON customers;
+
+
+CREATE TABLE products (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(255),
+  price INT,
+  PRIMARY KEY(id)
+);
+
+
+-- FOREIGN KEY
+-- Used to prevent data corruption within database or an unstable database
+-- Prevents us from deleting records that are needed for other records
+CREATE TABLE orders (
+  id INT NOT NULL AUTO_INCREMENT,
+  orderNumber INT,
+  productId INT,
+  customerId INT,
+  orderDate DATETIME default CURRENT_TIMESTAMP,
+  PRIMARY KEY(id),
+  FOREIGN KEY(customerId) REFERENCES customers(id),
+  FOREIGN KEY(productId) REFERENCES products(id)
+);
