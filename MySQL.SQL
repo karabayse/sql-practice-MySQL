@@ -235,5 +235,9 @@ SELECT firstName AS 'First Name', lastName AS 'Last Name' FROM customers;
 SELECT CONCAT(firstName, ' ', lastName) AS 'Name', address, city, state
 FROM customers
 
-SELECT CONCAT(firstName, ' ', lastName) AS 'Name', CONCAT(address, ' ', city, ' ', state)
+SELECT CONCAT(firstName, ' ', lastName) AS 'Name',
+CONCAT(address, ' ', city, ' ', state) AS 'Address'
 FROM customers
+
+SELECT o.id, o.orderDate, c.firstName, c.lastName
+FROM customers as c, orders as o
