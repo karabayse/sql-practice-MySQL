@@ -274,3 +274,8 @@ HAVING COUNT(age) >= 2;
 
 -- Ucase
 SELECT UCASE(firstName) FROM customers;
+
+SELECT UCASE(firstName), lastName FROM customers;
+
+-- Lcase
+SELECT LCASE(firstName), UCASE(lastName) FROM customers;
