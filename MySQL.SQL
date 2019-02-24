@@ -159,6 +159,7 @@ CREATE TABLE products (
 );
 
 
+
 -- FOREIGN KEY
 -- Used to prevent data corruption within database or an unstable database
 -- Prevents us from deleting records that are needed for other records
@@ -172,6 +173,7 @@ CREATE TABLE orders (
   FOREIGN KEY(customerId) REFERENCES customers(id),
   FOREIGN KEY(productId) REFERENCES products(id)
 );
+
 
 
 -- JOINS
@@ -228,16 +230,39 @@ ON orders.customerId = customers.id
 ORDER BY order.orderNumber;
 
 
+
 -- ALIASES
 SELECT firstName AS 'First Name', lastName AS 'Last Name' FROM customers;
 
 -- Combine Columns
 SELECT CONCAT(firstName, ' ', lastName) AS 'Name', address, city, state
-FROM customers
+FROM customers;
 
+-- Aliases for columns
 SELECT CONCAT(firstName, ' ', lastName) AS 'Name',
 CONCAT(address, ' ', city, ' ', state) AS 'Address'
-FROM customers
+FROM customers;
 
+-- Aliases for tables
 SELECT o.id, o.orderDate, c.firstName, c.lastName
-FROM customers as c, orders as o
+FROM customers as c, orders as o;
+
+
+
+-- AGGREGATE FUNCTIONS
+
+-- Take a column and get the average
+SELECT AVG(age) FROM customers;
+
+SELECT COUNT(age) FROM customers;
+
+SELECT MAX(age) FROM customers;
+
+SELECT MIN(age) FROM customers;
+
+SELECT SUM(age) FROM customers;
+
+-- Group By 
+SELECT age, COUNT(age) FROM customers
+WHERE age < 30
+GROUP BY age;
