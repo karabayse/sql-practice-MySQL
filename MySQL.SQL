@@ -231,6 +231,9 @@ ORDER BY order.orderNumber;
 -- ALIASES
 SELECT firstName AS 'First Name', lastName AS 'Last Name' FROM customers;
 
--- Combine Columns 
+-- Combine Columns
 SELECT CONCAT(firstName, ' ', lastName) AS 'Name', address, city, state
+FROM customers
+
+SELECT CONCAT(firstName, ' ', lastName) AS 'Name', CONCAT(address, ' ', city, ' ', state)
 FROM customers
