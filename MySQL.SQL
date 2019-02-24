@@ -218,7 +218,7 @@ RIGHT JOIN customers
 ON orders.customerId = customers.id
 ORDER BY orders.orderNumber;
 
--- INNER JOIN 3 TABLES 
+-- INNER JOIN 3 TABLES
 SELECT orders.orderNumber, customers.firstName, customers.lastName, products.lastName
 FROM orders
 INNER JOIN products
@@ -226,3 +226,11 @@ ON orders.productId = products.id
 INNER JOIN customers
 ON orders.customerId = customers.id
 ORDER BY order.orderNumber;
+
+
+-- ALIASES
+SELECT firstName AS 'First Name', lastName AS 'Last Name' FROM customers;
+
+-- Combine Columns 
+SELECT CONCAT(firstName, ' ', lastName) AS 'Name', address, city, state
+FROM customers
