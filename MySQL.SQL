@@ -271,3 +271,6 @@ GROUP BY age;
 SELECT age, COUNT(age) FROM customers
 GROUP BY age
 HAVING COUNT(age) >= 2;
+
+-- Ucase
+SELECT UCASE(firstName) FROM customers;
