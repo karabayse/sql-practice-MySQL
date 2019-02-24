@@ -262,7 +262,12 @@ SELECT MIN(age) FROM customers;
 
 SELECT SUM(age) FROM customers;
 
--- Group By 
+-- Group By
 SELECT age, COUNT(age) FROM customers
 WHERE age < 30
 GROUP BY age;
+
+-- Group By and Having
+SELECT age, COUNT(age) FROM customers
+GROUP BY age
+HAVING COUNT(age) >= 2;
